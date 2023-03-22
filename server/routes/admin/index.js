@@ -52,6 +52,10 @@ module.exports = app => {
   // 引入multer模块，主要应用于图片或文件的上传
   // 上传到指定目录下
   const multer = require('multer')
-  const upload = multer({ dest: __dirname })
-
+  const upload = multer({ dest: __dirname + '/../../uploads' })
+  app.post('/admin/api/upload', upload.single('file'), async (req, res) => {
+    const file = req.file
+    file.url = `http://localhost:3000/uploads/${file.filename}`
+    res.send(file)
+  })
 }

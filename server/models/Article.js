@@ -1,14 +1,17 @@
-// 分类数据表
+// 文章数据表
 const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
-  name: {
+  title: {
     type: String
   },
-  parent: {
+  categories: [{
     type: mongoose.SchemaTypes.ObjectId,
     ref: 'Category'
+  }],
+  body: {
+    type: String
   }
 })
 
-module.exports = mongoose.model('Category', schema)
+module.exports = mongoose.model('Article', schema)
