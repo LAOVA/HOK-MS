@@ -21,7 +21,8 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: Login
+    component: Login,
+    meta: { notAuth: true }
   },
   {
     path: '/',
@@ -60,8 +61,18 @@ const routes = [
   }
 ]
 
+
 const router = new VueRouter({
   routes
+})
+
+// 设置全局前置守卫
+router.beforeEach((to, from, next) => {
+  if (!to.meta.notAuth && !localStorage.token) {
+    // 重定向到登录页面
+    return next('/login')
+  }
+  next()
 })
 
 export default router

@@ -1,17 +1,24 @@
-const AdminUser = require('../../models/AdminUser');
-const assert = require('http-assert')
-
 module.exports = app => {
   const express = require('express');
+  const AdminUser = require('../../models/AdminUser');
+  const assert = require('http-assert')
+  // 导入token资源
+  const jwt = require('jsonwebtoken')
+  const { key } = require('../../key')
   // 创建路由
   const router = express.Router({
     // 保留父路由器的req.params值。如果父项和子项的参数名有冲突，则子项的值优先。
     mergeParams: true
   });
 
-  // 导入token资源
-  const jwt = require('jsonwebtoken')
-  const { key } = require('../../key')
+
+
+  // 设置登录校验中间件
+  const authUser = require('../../middleware/authUser')()
+
+  // 设置路由模块动态载入中间件
+  const authResource = require('../../middleware/authResource')()
+
 
   // 配置接口
   // 新建分类
@@ -48,39 +55,14 @@ module.exports = app => {
   })
 
   // 挂载rest路由
-  app.use('/admin/api/rest/:resource', async (req, res, next) => {
-    // 设置验证中间件
-    const token = String(req.headers.authorization || '').split(' ').pop()
-    if (token == 'undefined') {
-      // 验证缓存中有无token
-      assert(!token, 401, '请先登录')
-      return
-    }
-    // 解析token
-    const { id } = jwt.verify(token, key)
-    // 挂载到req上
-    req.user = await AdminUser.findById(id)
-    assert(req.user, 401, '请重新登录')
-    // if (!user) {
-    //   return res.status(422).send({
-    //     message: '用户不存在'
-    //   })
-    // }
-    await next()
-  }, (req, res, next) => {
-    // 导入数据库模型
-    // 利用inflection模块，将resource转换为模型名
-    const modelName = require('inflection').classify(req.params.resource)
-    req.Model = require(`../../models/${modelName}`)
-    next()
-  }, router)
+  app.use('/admin/api/rest/:resource', authUser, authResource, router)
 
   // 挂载upload路由
   // 引入multer模块，主要应用于图片或文件的上传
   // 上传到指定目录下
   const multer = require('multer')
   const upload = multer({ dest: __dirname + '/../../uploads' })
-  app.post('/admin/api/upload', upload.single('file'), async (req, res) => {
+  app.post('/admin/api/upload', authUser, upload.single('file'), async (req, res) => {
     const file = req.file
     file.url = `http://localhost:3000/uploads/${file.filename}`
     res.send(file)
@@ -92,12 +74,6 @@ module.exports = app => {
     // 查找用户
     const user = await AdminUser.findOne({ username })
     assert(user, 422, '用户不存在')
-    // if (!user) {
-    //   return res.status(422).send({
-    //     message: '用户不存在'
-    //   })
-    // }
-    // 校验密码
     // 利用bcrypthon模块，对密码进行检验
     let isValid
     if (password) {
@@ -106,11 +82,6 @@ module.exports = app => {
       assert(isValid, 422, '密码不能为空')
     }
     assert(isValid, 422, '账号或密码错误')
-    // if (!isValid) {
-    //   return res.status(422).send({
-    //     message: '账号或密码错误'
-    //   })
-    // }
     // 返回token
     const token = jwt.sign({ id: user._id, }, key)
     res.send({ token })
