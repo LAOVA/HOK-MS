@@ -13,6 +13,8 @@ import "swiper/dist/css/swiper.css";
 Vue.use(VueAwesomeSwiper)
 
 // 导入组件
+import Card from './components/Card.vue'
+Vue.component('my-card', Card)
 import ListCard from './components/ListCard.vue'
 Vue.component('my-listcard', ListCard)
 

@@ -60,7 +60,8 @@
       </el-header>
 
       <el-main>
-        <router-view></router-view>
+        <!-- 通过路由来区分同个组件的重新加载 -->
+        <router-view :key="$route.path"></router-view>
       </el-main>
     </el-container>
   </el-container>

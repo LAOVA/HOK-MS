@@ -1,6 +1,7 @@
 // 颜色
 $colors: (
-  primary: #db9e3f,
+  'primary': #db9e3f,
+  'info':#4b67af,
   "white":#fff,
   "light" : #f9f9f9,
   "light-1" : #d4d9de,
@@ -31,7 +32,7 @@ $border-color: map-get($map: $colors, $key: light-1);
 // 文字位置
 @each $var in (left, center, right) {
   .text-#{$var} {
-    text-align: $var;
+    text-align: $var !important;
   }
 }
 

@@ -11,6 +11,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'))
 // 传递app对象
 require('./routes/admin')(app)
 require('./plugins/db')(app)
+require('./routes/web')(app)
 
 app.listen(3000, () => {
   console.log('http://localhost:3000 is running')

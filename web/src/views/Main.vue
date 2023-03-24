@@ -32,4 +32,11 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.topbar {
+  /* 粘性布局，吸顶效果 */
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+</style>

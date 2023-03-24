@@ -5,8 +5,9 @@
       <swiper-slide><img src="../assets/images/1e7bb2576ac13117ca095d97910adcf4.jpeg" class="w-100"></swiper-slide>
       <swiper-slide><img src="../assets/images/97bde2d2af87054fb99377f624e7fc7f.jpeg" class="w-100"></swiper-slide>
       <swiper-slide><img src="../assets/images/af4cfc7d8fa6a261811ad85353753173.jpeg" class="w-100"></swiper-slide>
+      <div class="swiper-pagination pagination-home text-right" slot="pagination"></div>
     </swiper>
-    <div class="swiper-pagination" slot="pagination"></div>
+
 
     <!-- 图标导航 -->
     <div class="nav-icons bg-white mt-3 pt-3 text-center">
@@ -23,7 +24,22 @@
     </div>
 
     <!-- 新闻资讯 -->
+    <my-listcard icon="cc-menu-circle" title="新闻资讯" :categories="news">
+      <template>
+        <swiper-slide v-for="(obj, i) in news" :key="i">
+          <div class="py-2" v-for="(item, j) in obj.list" :key="j">
+            <span class="text-info">[{{ item.categoryName }}]</span>
+            <span> | </span>
+            <span>{{ item.title }}</span>
+            <span>{{ item.date }}</span>
+          </div>
+        </swiper-slide>
+      </template>
+    </my-listcard>
 
+    <my-card icon="cc - menu - circle" title="aaa"></my-card>
+    <my-card icon="cc - menu - circle" title="title"></my-card>
+    <my-card icon="cc - menu - circle" title="title"></my-card>
 
   </div>
 </template>
@@ -34,12 +50,67 @@ export default {
     return {
       swiperOption: {
         pagination: {
-          el: ".swiper-pagination",
+          el: ".pagination-home", //区分其他pagination
           clickable: true,
         },
         autoplay: 3000,
         loop: true,
       },
+      news: [
+        {
+          name: '热门',
+          list: [
+            {
+              categoryName: '公共',
+              title: '3月23日全服不停机更新公告',
+              date: '03/23'
+            },
+            {
+              categoryName: '公共',
+              title: '3月23日全服不停机更新公告',
+              date: '03/23'
+            },
+            {
+              categoryName: '公共',
+              title: '3月23日全服不停机更新公告',
+              date: '03/23'
+            }
+          ],
+        },
+        {
+          name: '新闻',
+          list: [{
+            categoryName: '公共',
+            title: '3月23日全服不停机更新公告',
+            date: '03/23'
+          }],
+        },
+        {
+          name: '公告',
+          list: [{
+            categoryName: '公共',
+            title: '3月23日全服不停机更新公告',
+            date: '03/23'
+          }],
+        },
+        {
+          name: '活动',
+          list: [{
+            categoryName: '公共',
+            title: '3月23日全服不停机更新公告',
+            date: '03/23'
+          }],
+        },
+        {
+          name: '赛事',
+          list: [{
+            categoryName: '公共',
+            title: '3月23日全服不停机更新公告',
+            date: '03/23'
+          }],
+        }
+
+      ]
     }
   }
 }

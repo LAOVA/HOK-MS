@@ -45,7 +45,7 @@ module.exports = app => {
       // 通过设置populate来关联父级关系，通过parent的值作为id来查询
       queryOptions.populate = 'parent'
     }
-    const items = await req.Model.find().setOptions(queryOptions).limit(10)
+    const items = await req.Model.find().setOptions(queryOptions).limit(100)
     res.send(items)
   })
   // 查询分类
