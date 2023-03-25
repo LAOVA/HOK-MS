@@ -7,6 +7,12 @@ import './assets/iconfont/iconfont.css'
 import './style.scss'
 import router from './router'
 
+// 导入axio
+import axios from 'axios'
+Vue.prototype.$http = axios.create({
+  baseURL: 'http://localhost:3000/web/api',
+})
+
 // 导入轮播图
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import "swiper/dist/css/swiper.css";

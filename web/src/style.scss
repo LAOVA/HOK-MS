@@ -10,7 +10,7 @@ $colors: (
   "dark-1":#343440,
   "dark" :#222,
   "black" :#000,
-
+  'blue':#4394e4
 );
 
 @each $colorKey,
@@ -57,6 +57,14 @@ $size in $font-sizes {
   .fs-#{$sizeKey} {
     font-size: $size * $base-font-size;
   }
+}
+
+// 文字单行显示
+.text-ellipse {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 
@@ -195,6 +203,15 @@ $type in $spacing-types {
   }
 }
 
+
+// 边框border
+@each $dir in (top, right, bottom, left) {
+  .border-#{$dir} {
+    border-#{$dir}: 1px solid $border-color
+  }
+}
+
+
 * {
   box-sizing: border-box;
   outline: none;
@@ -215,6 +232,10 @@ body {
 
 a {
   color: #999
+}
+
+p {
+  line-height: 1.5rem
 }
 
 // button

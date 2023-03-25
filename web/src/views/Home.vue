@@ -25,19 +25,29 @@
 
     <!-- 新闻资讯 -->
     <my-listcard icon="cc-menu-circle" title="新闻资讯" :categories="news">
-      <template>
-        <swiper-slide v-for="(obj, i) in news" :key="i">
-          <div class="py-2" v-for="(item, j) in obj.list" :key="j">
-            <span class="text-info">[{{ item.categoryName }}]</span>
-            <span> | </span>
-            <span>{{ item.title }}</span>
-            <span>{{ item.date }}</span>
-          </div>
-        </swiper-slide>
+      <template #content="obj">
+        <div class="py-2 fs-lg " v-for="(item, i) in obj.items.list" :key="i">
+          <router-link tag="div" :to="`/articles/${item._id}`" class="d-flex">
+            <span class="text-primary">[{{ obj.items.name }}]</span>
+            <span class="px-2 text-primary">|</span>
+            <span class="flex-1 text-dark-1 pr-1 text-ellipse">{{ item.title }}</span>
+            <span class="text-grey-1 fs-sm">{{ item.createdAt | date }}</span>
+          </router-link>
+        </div>
+
       </template>
     </my-listcard>
 
-    <my-card icon="cc - menu - circle" title="aaa"></my-card>
+    <my-listcard icon="cc-menu-circle" title="英雄列表" :categories="heroes">
+      <template #content="obj">
+        <div class="d-flex flex-wrap" style="margin:0 -0.4rem">
+          <div class="px-2 fs-lg text-center" style="width:20%" v-for="(item, i) in obj.items.list" :key="i">
+            <img :src="item.avatar" class="w-100">
+            <div>{{ item.name }}</div>
+          </div>
+        </div>
+      </template>
+    </my-listcard>
     <my-card icon="cc - menu - circle" title="title"></my-card>
     <my-card icon="cc - menu - circle" title="title"></my-card>
 
@@ -45,6 +55,7 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
 export default {
   data() {
     return {
@@ -56,61 +67,27 @@ export default {
         autoplay: 3000,
         loop: true,
       },
-      news: [
-        {
-          name: '热门',
-          list: [
-            {
-              categoryName: '公共',
-              title: '3月23日全服不停机更新公告',
-              date: '03/23'
-            },
-            {
-              categoryName: '公共',
-              title: '3月23日全服不停机更新公告',
-              date: '03/23'
-            },
-            {
-              categoryName: '公共',
-              title: '3月23日全服不停机更新公告',
-              date: '03/23'
-            }
-          ],
-        },
-        {
-          name: '新闻',
-          list: [{
-            categoryName: '公共',
-            title: '3月23日全服不停机更新公告',
-            date: '03/23'
-          }],
-        },
-        {
-          name: '公告',
-          list: [{
-            categoryName: '公共',
-            title: '3月23日全服不停机更新公告',
-            date: '03/23'
-          }],
-        },
-        {
-          name: '活动',
-          list: [{
-            categoryName: '公共',
-            title: '3月23日全服不停机更新公告',
-            date: '03/23'
-          }],
-        },
-        {
-          name: '赛事',
-          list: [{
-            categoryName: '公共',
-            title: '3月23日全服不停机更新公告',
-            date: '03/23'
-          }],
-        }
-
-      ]
+      news: [],
+      heroes: []
+    }
+  },
+  filters: {
+    date(val) {
+      return dayjs(val).format('MM/DD')
+    }
+  },
+  created() {
+    this.fetchNews()
+    this.fetchHeroes()
+  },
+  methods: {
+    async fetchNews() {
+      const res = await this.$http.get('news/list')
+      this.news = res.data
+    },
+    async fetchHeroes() {
+      const res = await this.$http.get('heroes/list')
+      this.heroes = res.data
     }
   }
 }
