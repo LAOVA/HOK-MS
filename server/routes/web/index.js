@@ -123,7 +123,10 @@ module.exports = app => {
   // 根据id查英雄,加.lean()转为纯粹的json对象
   router.get('/heroes/:id', async (req, res) => {
     // 需要populate来关联partner的id
-    const data = await Hero.findById(req.params.id).populate('categories').lean()
+    const data = await Hero
+      .findById(req.params.id)
+      .populate('categories items1 items2 partners.hero')
+      .lean()
     res.send(data)
   })
 

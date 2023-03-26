@@ -28,9 +28,8 @@
       <template #content="obj">
         <div class="py-2 fs-lg " v-for="(item, i) in obj.items.list" :key="i">
           <router-link tag="div" :to="`/articles/${item._id}`" class="d-flex">
-            <span class="text-primary">[{{ obj.items.name }}]</span>
-            <span class="px-2 text-primary">|</span>
-            <span class="flex-1 text-dark-1 pr-1 text-ellipse">{{ item.title }}</span>
+            <span class="text-primary mr-2 label fs-xxs px-1">{{ obj.items.name }}</span>
+            <span class="flex-1 text-dark-1 pr-1 text-ellipse" style="line-height:1.2308rem">{{ item.title }}</span>
             <span class="text-grey-1 fs-sm">{{ item.createdAt | date }}</span>
           </router-link>
         </div>
@@ -50,8 +49,6 @@
         </div>
       </template>
     </my-listcard>
-    <my-card icon="cc - menu - circle" title="title"></my-card>
-    <my-card icon="cc - menu - circle" title="title"></my-card>
 
   </div>
 </template>
@@ -117,10 +114,11 @@ export default {
   background: url(../assets/index.png) no-repeat 0 0;
   background-size: 28.8462rem;
   display: inline-block;
+  width: 2.3846rem;
+  height: 1.9231rem;
 
   &.sprite-news {
-    width: 1.7692rem;
-    height: 1.5385rem;
+
     background-position: 63.546% 15.517%;
   }
 
@@ -129,5 +127,10 @@ export default {
     height: .7692rem;
     background-position: 38.577% 52.076%;
   }
+}
+
+.label {
+  border: 1px solid map-get($map: $colors, $key: 'primary');
+  border-radius: 10%;
 }
 </style>

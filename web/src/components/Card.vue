@@ -1,9 +1,9 @@
 <template>
   <div class="card bg-white p-3 mt-3">
-    <div class="card-header pb-3 d-flex">
+    <div class="card-header d-flex" :class="{ 'border-bottom': !plain, 'pb-3': !plain }">
       <i class="iconfont" :class="`icon-${icon}`"></i>
-      <div class="fs-xl flex-1 px-2">{{ title }}</div>
-      <i class="iconfont icon-menu "></i>
+      <div class="fs-xl flex-1 px-2" :class="{ 'fs-900': plain }">{{ title }}</div>
+      <i class="iconfont icon-menu" v-if="!plain"></i>
     </div>
     <div class="card-body pt-3">
       <slot></slot>
@@ -16,6 +16,7 @@ export default {
   props: {
     title: { type: String, required: true },
     icon: { type: String, required: true },
+    plain: { type: Boolean },
   }
 }
 </script>
@@ -24,10 +25,6 @@ export default {
 @import '../style.scss';
 
 .card {
-  .card-header {
-    border-bottom: 1px solid $border-color;
-  }
-
   border-bottom: 1px solid $border-color;
 }
 </style>

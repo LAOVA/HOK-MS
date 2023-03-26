@@ -3,6 +3,8 @@ $colors: (
   'primary': #db9e3f,
   'info':#4b67af,
   "white":#fff,
+  "white-1":#fcfcfc,
+  "white-2":#eceef0,
   "light" : #f9f9f9,
   "light-1" : #d4d9de,
   "grey" :#999,
@@ -52,11 +54,23 @@ $font-sizes: (
   //13.9997px
   xl:1.2308 //16.0004px
 );
+// 字体粗细
+$font-weight: (
+  400,
+  700,
+  900
+);
 
 @each $sizeKey,
 $size in $font-sizes {
   .fs-#{$sizeKey} {
     font-size: $size * $base-font-size;
+  }
+}
+
+@each $weight in $font-weight {
+  .fs-#{$weight} {
+    font-weight: $weight;
   }
 }
 
@@ -245,7 +259,24 @@ p {
   border-radius: .1538rem;
   font-size: map-get($font-sizes, 'sm') * $base-font-size;
   padding: .2rem .6rem;
+
+  &.btn-lg {
+    i {
+      color: map-get($map: $colors, $key: 'primary');
+      font-weight: bold;
+      font-size: 1.5rem;
+      vertical-align: middle;
+      margin-right: .5rem;
+    }
+
+    background: map-get($map: $colors, $key: 'white-1');
+    border: 1px solid map-get($map: $colors, $key: 'white-2');
+    font-size: 1rem;
+    padding: .8rem 1rem;
+  }
 }
+
+
 
 // nav
 .nav {
