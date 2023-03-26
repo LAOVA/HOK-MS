@@ -12,9 +12,9 @@
     <!-- 图标导航 -->
     <div class="nav-icons bg-white mt-3 pt-3 text-center">
       <div class=" d-flex flex-wrap ">
-        <div class="nav-item mb-2 py-2 px-3 text-dark-1" v-for="n in 10" :key="n">
+        <div class="nav-item mb-4 px-3 text-dark-1" v-for="n in nav" :key="n">
           <i class="sprite sprite-news"></i>
-          <div class="mt-1">爆料啊</div>
+          <div class="mt-1 fs-xs">{{ n }}</div>
         </div>
       </div>
       <div class="bg-light py-2">
@@ -67,7 +67,17 @@ export default {
         loop: true,
       },
       news: [],
-      heroes: []
+      heroes: [],
+      nav: [
+        '爆料站',
+        '故事站',
+        '周边商城',
+        '体验服',
+        '新人专区',
+        '荣耀·传承',
+        '王者营地',
+        '公众号',
+      ]
     }
   },
   filters: {
@@ -117,10 +127,6 @@ export default {
   width: 2.3846rem;
   height: 1.9231rem;
 
-  &.sprite-news {
-
-    background-position: 63.546% 15.517%;
-  }
 
   &.sprite-arrow {
     width: .7692rem;
@@ -132,5 +138,53 @@ export default {
 .label {
   border: 1px solid map-get($map: $colors, $key: 'primary');
   border-radius: 10%;
+}
+
+.nav-item:nth-child(1) {
+  .sprite-news {
+    background-position: 63.546% 15.517%;
+  }
+}
+
+.nav-item:nth-child(2) {
+  .sprite-news {
+    background-position: 90.483% 15.614%;
+  }
+}
+
+.nav-item:nth-child(3) {
+  .sprite-news {
+    background-position: 36.746% 0.924%;
+  }
+}
+
+.nav-item:nth-child(4) {
+  .sprite-news {
+    background-position: 9.408% 15.517%;
+  }
+}
+
+.nav-item:nth-child(5) {
+  .sprite-news {
+    background-position: 90.733% 1.266%;
+  }
+}
+
+.nav-item:nth-child(6) {
+  .sprite-news {
+    background-position: 36.467% 15.287%;
+  }
+}
+
+.nav-item:nth-child(7) {
+  .sprite-news {
+    background-position: 63.3% 0.927%;
+  }
+}
+
+.nav-item:nth-child(8) {
+  .sprite-news {
+    background-position: -1% 96.207%;
+  }
 }
 </style>
