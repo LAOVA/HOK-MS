@@ -113,9 +113,17 @@ module.exports = app => {
     res.send(cats)
   })
 
-  // 根据id查文章
+
+  // 根据id查文章,加.lean()转为纯粹的json对象
   router.get('/articles/:id', async (req, res) => {
-    const data = await Article.findById(req.params.id)
+    const data = await Article.findById(req.params.id).lean()
+    res.send(data)
+  })
+
+  // 根据id查英雄,加.lean()转为纯粹的json对象
+  router.get('/heroes/:id', async (req, res) => {
+    // 需要populate来关联partner的id
+    const data = await Hero.findById(req.params.id).populate('categories').lean()
     res.send(data)
   })
 

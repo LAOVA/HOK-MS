@@ -1,4 +1,4 @@
-// 装备数据表
+// 物品数据表
 const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({

@@ -10,7 +10,8 @@ $colors: (
   "dark-1":#343440,
   "dark" :#222,
   "black" :#000,
-  'blue':#4394e4
+  'blue':#4394e4,
+  'danger':rgb(221, 0, 27)
 );
 
 @each $colorKey,

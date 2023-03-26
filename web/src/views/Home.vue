@@ -41,9 +41,11 @@
     <my-listcard icon="cc-menu-circle" title="英雄列表" :categories="heroes">
       <template #content="obj">
         <div class="d-flex flex-wrap" style="margin:0 -0.4rem">
-          <div class="px-2 fs-lg text-center" style="width:20%" v-for="(item, i) in obj.items.list" :key="i">
-            <img :src="item.avatar" class="w-100">
-            <div>{{ item.name }}</div>
+          <div class="px-2 fs-lg text-center py-2" style="width:20%" v-for="(item, i) in obj.items.list" :key="i">
+            <router-link tag="div" :to="`/heroes/${item._id}`">
+              <img :src="item.avatar" class="w-100">
+              <div>{{ item.name }}</div>
+            </router-link>
           </div>
         </div>
       </template>
