@@ -2,9 +2,17 @@ module.exports = app => {
   const router = require('express').Router()
   const mongoose = require('mongoose')
   // const News = require('../../models/Article')
+  const Ab = mongoose.model('Ab')
   const Category = mongoose.model('Category')
   const Article = mongoose.model('Article')
   const Hero = mongoose.model('Hero')
+
+
+  // 提供web页面的广告轮播接口
+  router.get('/abs/list', async (req, res) => {
+    const cats = await Ab.find().lean()
+    res.send(cats)
+  })
 
   // 导入新闻数据
   router.get('/news/init', async (req, res) => {

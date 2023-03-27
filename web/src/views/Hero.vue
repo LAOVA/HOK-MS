@@ -70,9 +70,9 @@
                     <span class="text-grey-1 ml-4">(冷却值:{{ skill.delay }} 消耗:{{
                       skill.cost }})</span>
                   </div>
-                  <p>{{ skill.description }}</p>
-                  <div class="text-grey border-top fs-sm" v-if="skill.tips">
-                    <p>小提示：{{ skill.tips }}</p>
+                  <p class="mt-0">{{ skill.description }}</p>
+                  <div class="text-grey border-top fs-sm" v-if="skill.tip">
+                    <p class="mb-0">小提示：{{ skill.tip }}</p>
                   </div>
                 </div>
               </div>
@@ -122,6 +122,7 @@
         </swiper-slide>
       </swiper>
     </div>
+    <div class="share"></div>
   </div>
 </template>
 
@@ -159,14 +160,16 @@ export default {
 <style lang="scss">
 @import '../style.scss';
 
-.topbar {
-  /* 粘性布局，吸顶效果 */
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
+
 
 .page-hero {
+  .topbar {
+    /* 粘性布局，吸顶效果 */
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
   .topBg {
     height: 50vw;
     background: #fff no-repeat top center;
@@ -208,6 +211,17 @@ export default {
       height: 45px;
       border-radius: 50%;
     }
+  }
+
+  .share {
+    width: 3rem;
+    height: 3rem;
+    position: fixed;
+    right: 0.2rem;
+    top: 9.09rem;
+    background: url(../assets/images/share-icon.png) no-repeat;
+    background-size: contain;
+    z-index: 99;
   }
 
 }

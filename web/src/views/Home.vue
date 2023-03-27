@@ -2,9 +2,11 @@
   <div>
     <!-- 轮播图 -->
     <swiper :options="swiperOption">
-      <swiper-slide><img src="../assets/images/1e7bb2576ac13117ca095d97910adcf4.jpeg" class="w-100"></swiper-slide>
-      <swiper-slide><img src="../assets/images/97bde2d2af87054fb99377f624e7fc7f.jpeg" class="w-100"></swiper-slide>
-      <swiper-slide><img src="../assets/images/af4cfc7d8fa6a261811ad85353753173.jpeg" class="w-100"></swiper-slide>
+      <swiper-slide v-for="i in abs" :key="i._id">
+        <a :href="i.url">
+          <img :src="i.image" class="w-100">
+        </a>
+      </swiper-slide>
       <div class="swiper-pagination pagination-home text-right" slot="pagination"></div>
     </swiper>
 
@@ -66,6 +68,7 @@ export default {
         autoplay: 3000,
         loop: true,
       },
+      abs: [],
       news: [],
       heroes: [],
       nav: [
@@ -86,10 +89,15 @@ export default {
     }
   },
   created() {
+    this.fetchAbs()
     this.fetchNews()
     this.fetchHeroes()
   },
   methods: {
+    async fetchAbs() {
+      const res = await this.$http.get('abs/list')
+      this.abs = res.data.map(item => { if (item.name == '轮播图') return item })[0].items
+    },
     async fetchNews() {
       const res = await this.$http.get('news/list')
       this.news = res.data
