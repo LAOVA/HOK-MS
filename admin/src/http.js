@@ -3,7 +3,7 @@ import Vue from "vue";
 import router from "./router";
 
 const http = axios.create({
-  baseURL: 'http://localhost:3000/admin/api'
+  baseURL: process.env.VUE_APP_API_URL || '/admin/api'
 })
 
 // 设置请求拦截器，添加请求头Authorization

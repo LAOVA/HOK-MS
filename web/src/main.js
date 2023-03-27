@@ -10,7 +10,7 @@ import router from './router'
 // 导入axio
 import axios from 'axios'
 Vue.prototype.$http = axios.create({
-  baseURL: 'http://localhost:3000/web/api',
+  baseURL: process.env.VUE_APP_API_URL || '/web/api',
 })
 
 // 导入轮播图
