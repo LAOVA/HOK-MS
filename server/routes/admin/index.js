@@ -7,7 +7,7 @@ module.exports = app => {
   const { key } = require('../../key')
   // 创建路由
   const router = express.Router({
-    // 保留父路由器的req.params值。如果父项和子项的参数名有冲突，则子项的值优先。
+    // 将父路由器url参数的req.params值（即：app.use('/admin/api/rest/:resource', router)中的":resource"，合并到router里面路由的参数req.params中。
     mergeParams: true
   });
 
@@ -72,7 +72,7 @@ module.exports = app => {
   app.post('/admin/api/login', async (req, res) => {
     const { username, password } = req.body
     // 查找用户
-    const user = await AdminUser.findOne({ username })
+    const user = await AdminUser.findOne({ username }).select('+password')
     assert(user, 422, '用户不存在')
     // 利用bcrypthon模块，对密码进行检验
     let isValid

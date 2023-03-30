@@ -6,7 +6,7 @@ const schema = new mongoose.Schema({
   password: {
     type: String,
     // 设置密码不显示
-    select: true,
+    select: false,
     set(val) {
       // 进行散列加密
       return require('bcryptjs').hashSync(val, 10)
