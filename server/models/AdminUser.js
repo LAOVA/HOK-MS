@@ -1,11 +1,11 @@
-// 装备数据表
+// 用户数据表
 const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
   username: { type: String },
   password: {
     type: String,
-    // 设置密码不显示
+    // 设置密码不可查
     select: false,
     set(val) {
       // 进行散列加密
