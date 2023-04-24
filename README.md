@@ -3,30 +3,27 @@
 ## 界面展示
 
 ### 前台界面
+![image](https://github.com/LAOVA/HOK-MS/blob/master/images/1.png)
 
-<img src="C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170445268.png" alt="image-20230424170445268" style="zoom: 80%;" />
+![image](https://github.com/LAOVA/HOK-MS/blob/master/images/2.png)
 
-<img src="C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170519441.png" alt="image-20230424170519441" style="zoom:80%;" />
+![image](https://github.com/LAOVA/HOK-MS/blob/master/images/3.png)
 
-<img src="C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170547512.png" alt="image-20230424170547512" style="zoom:80%;" />
+![image](https://github.com/LAOVA/HOK-MS/blob/master/images/4.png)
 
-<img src="C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170605063.png" alt="image-20230424170605063" style="zoom:80%;" />
-
-<img src="C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170632595.png" alt="image-20230424170632595" style="zoom:80%;" />
-
+![image](https://github.com/LAOVA/HOK-MS/blob/master/images/5.png)
 
 
 ### 后台界面
+![image](https://github.com/LAOVA/HOK-MS/blob/master/images/6.png)
 
-![image-20230424170907534](C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170907534.png)
+![image](https://github.com/LAOVA/HOK-MS/blob/master/images/7.png)
 
-![image-20230424170729120](C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170729120.png)
+![image](https://github.com/LAOVA/HOK-MS/blob/master/images/8.png)
 
-![image-20230424170746875](C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170746875.png)
+![image](https://github.com/LAOVA/HOK-MS/blob/master/images/9.png)
 
-![image-20230424170819111](C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170819111.png)
-
-![image-20230424170852383](C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170852383.png)
+![image](https://github.com/LAOVA/HOK-MS/blob/master/images/10.png)
 
 
 
