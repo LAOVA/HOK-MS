@@ -1,5 +1,33 @@
 # HOK-MS 王者荣耀官网镜像
 
+## 界面展示
+
+### 前台界面
+
+<img src="C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170445268.png" alt="image-20230424170445268" style="zoom: 80%;" />
+
+<img src="C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170519441.png" alt="image-20230424170519441" style="zoom:80%;" />
+
+<img src="C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170547512.png" alt="image-20230424170547512" style="zoom:80%;" />
+
+<img src="C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170605063.png" alt="image-20230424170605063" style="zoom:80%;" />
+
+<img src="C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170632595.png" alt="image-20230424170632595" style="zoom:80%;" />
+
+
+
+### 后台界面
+
+![image-20230424170907534](C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170907534.png)
+
+![image-20230424170729120](C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170729120.png)
+
+![image-20230424170746875](C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170746875.png)
+
+![image-20230424170819111](C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170819111.png)
+
+![image-20230424170852383](C:\Users\17232\Desktop\Markdown笔记\实战项目\image-20230424170852383.png)
+
 
 
 ## 目录结构
